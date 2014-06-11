@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>yizhandaodiDB</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <security-role>
+    <role-name>quizlib-customer</role-name>
+  </security-role>
+  <login-config>
+    <auth-method>BASIC</auth-method>
+  </login-config>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>QuizLib</web-resource-name>
+      <url-pattern>/*</url-pattern>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>quizlib-customer</role-name>
+    </auth-constraint>
+  </security-constraint>
+  <servlet>
+    <description>get the missing DBs on client</description>
+    <display-name>getMissingDb</display-name>
+    <servlet-name>getMissingDb</servlet-name>
+    <servlet-class>getDb.getMissingDb</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getMissingDb</servlet-name>
+    <url-pattern>/getMissingDb</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>get a list of missing db names the client doesn't have</description>
+    <display-name>getMissingList</display-name>
+    <servlet-name>getMissingList</servlet-name>
+    <servlet-class>getDb.getMissingList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getMissingList</servlet-name>
+    <url-pattern>/getMissingList</url-pattern>
+  </servlet-mapping>
+</web-app>
